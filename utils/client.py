@@ -20,7 +20,7 @@ class Client:
                 data, addr = self.sock.recvfrom(1024)
                 print("[i] signal received from server")
                 print("[i] send message to server")
-                self.sock.sendto(slef.message,addr)
+                self.sock.sendto(bytes(self.message,'utf-8'),addr)
         except KeyboardInterrupt:
             print('[d] finish Executing ... ')
             sys.exit("[d] exit code")
