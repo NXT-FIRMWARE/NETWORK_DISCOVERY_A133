@@ -1,4 +1,3 @@
-
 import socket
 import sys
 import struct
@@ -9,10 +8,11 @@ class Client:
         self.message = message
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
         self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        #sock.bind((multicast_address, port))
-        self.sock.bind(("", 5007))
+
         mreq = struct.pack("4sl", socket.inet_aton(multicast_address), socket.INADDR_ANY)
-        self.sock.setsockopt(socket.IPPROTO_IP, socket.IP_ADD_MEMBERSHIP, mreq)
+        self.sock.setsockopt(socket.SOL_SOCKET, socket.SO_BROADCAST,1)
+        #self.sock.bind((multicast_address, 5555))
+        self.sock.bind(("", 5555))
         print("[i] start multicast lestening ...")
     def run(self):
         try:
