@@ -11,8 +11,7 @@ class Client:
            "hostname" : socket.gethostname(),
            "wifi_mac" : netifaces.ifaddresses('wlan0')[netifaces.AF_LINK][0]['addr'],
            "ethernet_mac" : netifaces.ifaddresses('eth0')[netifaces.AF_LINK][0]['addr'],
-            "wifi_mac" : (netifaces.ifaddresses('wlan0')[netifaces.AF_INET][0]['addr'],
-           "ethernet_mac" : (netifaces.ifaddresses('eth0')[netifaces.AF_INET][0]['addr'],
+            "wifi_ip" : (netifaces.ifaddresses('wlan0')[netifaces.AF_INET][0]['addr'],
         }
         self.message = json.dumps(data)
         self.sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
